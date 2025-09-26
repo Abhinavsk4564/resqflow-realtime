@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Heart, Phone } from "lucide-react";
+import { Heart, Phone, Users } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
@@ -20,6 +21,10 @@ export const Header = () => {
           <a href="#volunteer" className="text-muted-foreground hover:text-foreground transition-colors">
             Volunteer
           </a>
+          <Link to="/volunteers" className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
+            <Users className="h-4 w-4" />
+            Dashboard
+          </Link>
           <a href="#updates" className="text-muted-foreground hover:text-foreground transition-colors">
             Updates
           </a>

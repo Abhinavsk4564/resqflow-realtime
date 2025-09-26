@@ -135,7 +135,7 @@ export const ResourceRequest = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="max-w-2xl mx-auto">
           <Card className="p-6">
             <div className="flex items-center gap-2 mb-6">
               <Package className="h-6 w-6" />
@@ -232,69 +232,6 @@ export const ResourceRequest = () => {
                 Submit Resource Request
               </Button>
             </form>
-          </Card>
-
-          <Card className="p-6">
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-2xl font-semibold">Real-Time Requests</h3>
-              <Button 
-                variant="outline" 
-                onClick={exportToExcel}
-                disabled={requests.length === 0}
-                className="flex items-center gap-2"
-              >
-                <Download className="h-4 w-4" />
-                Export to Excel
-              </Button>
-            </div>
-
-            <div className="space-y-4">
-              <div className="text-center p-8 bg-emergency/10 rounded-lg">
-                <AlertTriangle className="h-12 w-12 mx-auto mb-4 text-emergency" />
-                <h4 className="text-xl font-semibold mb-2">
-                  {requests.length} Active Requests
-                </h4>
-                <p className="text-muted-foreground">
-                  Emergency resource requests being processed
-                </p>
-              </div>
-
-              {requests.length > 0 && (
-                <div className="max-h-96 overflow-y-auto space-y-3">
-                  {requests.slice(-5).reverse().map(request => (
-                    <div key={request.id} className="p-3 bg-card border rounded-lg">
-                      <div className="flex justify-between items-start mb-2">
-                        <h5 className="font-medium">{request.name}</h5>
-                        <span className="text-xs text-muted-foreground">
-                          {new Date(request.timestamp).toLocaleString()}
-                        </span>
-                      </div>
-                      <div className="space-y-1">
-                        <p className="text-sm"><strong>Resource:</strong> {request.resourceType}</p>
-                        <p className="text-sm"><strong>Location:</strong> {request.location}</p>
-                        <p className={`text-sm font-medium ${getUrgencyColor(request.urgency)}`}>
-                          <AlertTriangle className="h-3 w-3 inline mr-1" />
-                          {request.urgency}
-                        </p>
-                        <div className="flex items-center justify-between mt-2">
-                          <span className="text-xs bg-warning/20 text-warning px-2 py-1 rounded">
-                            {request.status.toUpperCase()}
-                          </span>
-                          <span className="text-xs text-muted-foreground">
-                            ID: {request.id.slice(0, 8)}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                  {requests.length > 5 && (
-                    <p className="text-center text-muted-foreground text-sm">
-                      Showing latest 5 requests. Export to see all data.
-                    </p>
-                  )}
-                </div>
-              )}
-            </div>
           </Card>
         </div>
       </div>
